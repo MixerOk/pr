@@ -1,0 +1,24 @@
+name: Test Node.js application
+
+on:
+  push:
+    branches:
+      - main  # або інша гілка, на якій ви хочете запускати тести
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'  # або встановте версію, яка підходить для вашого проекту
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
